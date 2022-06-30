@@ -5,10 +5,11 @@ files:
       destination: /var/www/wordpress/
 
 hooks:
-  ApplicationStop:
-    - location: scripts/stopserver.sh
-      timeout: 50
-      
   ApplicationStart:
     - location: scripts/startserver.sh
+      timeout: 50
+  AfterInstall:
+    - location: scripts/permission.sh
+  ApplicationStop:
+    - location: scripts/stopserver.sh
       timeout: 50
